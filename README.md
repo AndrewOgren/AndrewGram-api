@@ -1,9 +1,4 @@
-# starter express app template
-
-* node with babel
-* expressjs
-* airbnb eslint rules
-
-Procfile set up to run on [heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-the-app)
+##lab5 - Backend to blog
+This is the backend to the blog app that we made in lab 4. It is hosted on Heroku. Go to http://ogrenblogs.surge.sh/ to check out the App.
 
 
