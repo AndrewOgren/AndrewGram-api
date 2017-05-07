@@ -9,7 +9,6 @@ const cleanPosts = (posts) => {
 
 export const createPost = (req, res) => {
   const post = new Post();
-  console.log(req.body);
   post.title = req.body.title;
   post.tags = req.body.tags;
   post.content = req.body.content;
@@ -32,8 +31,6 @@ export const getPosts = (req, res) => {
   });
 };
 export const getPost = (req, res) => {
-  console.log('The Req');
-  console.log(req.params.id);
   const id = new mongoose.Types.ObjectId(req.params.id);
   Post.findById(id)
   .then((result) => {
@@ -44,8 +41,6 @@ export const getPost = (req, res) => {
   });
 };
 export const deletePost = (req, res) => {
-  console.log('The Req');
-  console.log(req.params.id);
   Post.remove({ _id: req.params.id })
   .then((result) => {
     res.json({ message: 'Deleted post' });
@@ -55,7 +50,6 @@ export const deletePost = (req, res) => {
   });
 };
 export const updatePost = (req, res) => {
-  console.log(req.body);
   Post.update({ _id: req.params.id }, req.body)
   .then((result) => {
     res.json({ message: 'Updated post' });
