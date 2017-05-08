@@ -13,6 +13,7 @@ export const createPost = (req, res) => {
   post.tags = req.body.tags;
   post.content = req.body.content;
   post.cover_url = req.body.cover_url;
+  post.comments = req.body.comments;
   post.save()
   .then((result) => {
     res.json({ message: 'Post created!' });
