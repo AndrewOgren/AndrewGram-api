@@ -3,7 +3,7 @@ import Post from '../models/post_model';
 
 const cleanPosts = (posts) => {
   return posts.map((post) => {
-    return { id: post._id, title: post.title, tags: post.tags, cover_url: post.cover_url };
+    return { id: post._id, title: post.title, tags: post.tags, content: post.content, cover_url: post.cover_url, comments: post.comments };
   });
 };
 
