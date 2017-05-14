@@ -13,7 +13,6 @@ export const signup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const username = req.body.username;
-
   if (!email || !password) {
     res.status(422).send('You must provide email and password');
   }
@@ -26,11 +25,10 @@ export const signup = (req, res, next) => {
       user.email = email;
       user.password = password;
       user.username = username;
+
       return user.save()
       .then((r) => {
-        console.log(r);
-        const timestamp = new Date().getTime();
-        return jwt.encode({ sub: r.id, iat: timestamp }, process.env.AUTH_SECRET);
+        res.send({ token: tokenForUser(r) });
       })
       .catch((error) => {
         return res.status(500).json({ error });
@@ -45,5 +43,5 @@ export const signup = (req, res, next) => {
 
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
-  return jwt.encode({ sub: user.id, iat: timestamp }, process.env.AUTH_SECRET);
+  return jwt.encode({ sub: user._id, iat: timestamp }, process.env.AUTH_SECRET);
 }
