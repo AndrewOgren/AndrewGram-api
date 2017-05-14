@@ -3,7 +3,7 @@ import Post from '../models/post_model';
 
 const cleanPosts = (posts) => {
   return posts.map((post) => {
-    return { id: post._id, title: post.title, tags: post.tags, content: post.content, cover_url: post.cover_url, comments: post.comments };
+    return { id: post._id, title: post.title, tags: post.tags, content: post.content, cover_url: post.cover_url, username: post.username, author: post.author, comments: post.comments };
   });
 };
 
@@ -13,6 +13,8 @@ export const createPost = (req, res) => {
   post.tags = req.body.tags;
   post.content = req.body.content;
   post.cover_url = req.body.cover_url;
+  post.username = req.user.username;
+  post.author = req.body.author;
   post.comments = req.body.comments;
   post.save()
   .then((result) => {
